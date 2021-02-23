@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+}
+
+.container {
+    margin: auto;
+    width: 70%;
+    @media only screen and (min-width: 310px) and (max-width: 1024px) {
+        width: 90%;
+    }
+}
+
+.header {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 5px;
+    align-items: center;
+    &__update-button{
+        width: 10rem;
+        height: 3rem;
+        background-color: #a7a7a7;
+        border-radius: 5px;;
+        border: none;
+        color: white;
+    }
+
+    &__title {
+       
+    }
+}
+
+.city-card {
+    @media only screen and (min-width: 310px) and (max-width: 1024px) {
+        width: auto;
+    }
+    width: 500px;
+    display: grid;
+    &__params {
+        list-style-type: none;
+        padding: 0;
+
+    }
+    &__param {
+        background-color: #a7a7a7;
+        font-size: 20px;
+        margin: 8px 0px;
+        padding: 5px;
+        color: white;
+    }
+    &_main{
+        width: 100%;
+        
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+}
+.city-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: 'name name degrees weather-icon remove-btn';
+    align-items: center;
+    &_expanded {
+        font-size: 36px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 'name degrees'
+                            'weather-icon degrees'
+                            ;
+                            align-items: center;
+    }
+    &__name {
+        grid-area: name;
+        
+    }
+    &__degrees{
+        font-size: 30px;
+        grid-area: degrees;
+    }
+    &__weather-icon_lg {
+        grid-area: weather-icon;
+        width: 100px;
+    }
+    &__weather-icon_md {
+        grid-area: weather-icon;
+        width: 50px;
+    }
+    &__remove-btn {
+        grid-area: remove-btn;
+    }
+}
+.favorites-cities {
+    &__list {
+        display: grid;
+        list-style-type: none;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+        & > li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media only screen and (min-width: 310px) and (max-width: 1024px) {
+        &__list {
+            display: flex;
+            flex-direction: column;
+    
+        }
+    }
+
+}

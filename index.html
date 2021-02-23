@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="./scss/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Погода</h1>
+            <button class="header__update-button">Обновить</button>
+        </header>
+        <main class="main">
+            <section class="current-city">
+                <div class="city-card city-card_main">
+                    <div class="city-preview_expanded">
+                        <span class="city-preview__name">Saint-Petersburg</span>
+                        <p class="city-preview__degrees">8 C</p>
+                        <img class="city-preview__weather-icon_lg" src="./img/cloud.svg">
+                    </div>
+                    <ul class="city-card__params">
+                        <li class="city-card__param">temp</li>
+                        <li class="city-card__param">param2</li>
+                        <li class="city-card__param">param3</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="favorites-cities">
+                <h2>Избранное</h2>
+                <ul class="favorites-cities__list">
+                    <li сlass="favorites-cities__item">
+                        <div class="city-card city-card">
+                            <div class="city-preview">
+                                <span class="city-preview__name">Saint-Petersburg</span>
+                                <p class="city-preview__degrees">8 C</p>
+                                <img class="city-preview__weather-icon_md" src="./img/cloud.svg">
+                            </div>
+                            <ul class="city-card__params">
+                                <li class="city-card__param">temp</li>
+                                <li class="city-card__param">param2</li>
+                                <li class="city-card__param">param3</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li сlass="favorites-cities__item">
+                        <div class="city-card city-card">
+                            <div class="city-preview">
+                                <span class="city-preview__name">Saint-Petersburg</span>
+                                <p class="city-preview__degrees">8 C</p>
+                                <img class="city-preview__weather-icon_md" src="./img/cloud.svg">
+                            </div>
+                            <ul class="city-card__params">
+                                <li class="city-card__param">temp</li>
+                                <li class="city-card__param">param2</li>
+                                <li class="city-card__param">param3</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
