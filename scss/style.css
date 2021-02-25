@@ -27,19 +27,15 @@ body {
 }
 
 .header__update-button {
-  width: 10rem;
+  width: 7rem;
   height: 3rem;
-  background-color: #a7a7a7;
-  border-radius: 5px;
+  background-color: #d3d0d0;
+  border-radius: 10px;
   border: none;
-  color: white;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 560) {
-  .header__update-button {
-    background-image: url(../img/refresh.svg);
-    background-color: wheat;
-  }
+.header__update-img {
+  width: 2rem;
 }
 
 .city-card {
@@ -130,6 +126,12 @@ body {
   -ms-grid-row: 1;
   -ms-grid-column: 5;
   grid-area: remove-btn;
+  border: none;
+  background-color: #fff;
+}
+
+.city-preview__remove-img {
+  width: 2rem;
 }
 
 .form {
@@ -144,6 +146,16 @@ body {
 .form__input {
   width: 15rem;
   height: 1.5rem;
+}
+
+.form__submit {
+  border: none;
+  background-color: #fff;
+}
+
+.form__plus-img {
+  width: 2rem;
+  color: #a7a7a7;
 }
 
 .favorites-cities__list {

@@ -16,17 +16,17 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     padding: 5px;
     align-items: center;
+
     &__update-button{
-        @media only screen and (min-width: 310px) and (max-width: 560) {
-            background-image: url(../img/refresh.svg);
-            background-color: wheat;
-        }
-        width: 10rem;
+        width: 7rem;
         height: 3rem;
-        background-color: #a7a7a7;
-        border-radius: 5px;;
+        background-color: #d3d0d0;
+        border-radius: 10px;;
         border: none;
-        color: white;
+
+    }
+    &__update-img {
+        width: 2rem;
     }
 }
 
@@ -87,6 +87,12 @@ body {
     }
     &__remove-btn {
         grid-area: remove-btn;
+        border: none;
+        background-color: #fff;
+    }
+    &__remove-img {
+        width: 2rem;
+
     }
 }
 .form{
@@ -95,6 +101,15 @@ body {
     &__input {
         width: 15rem;
         height: 1.5rem;
+    }
+    &__submit{
+        border: none;
+        background-color: #fff;
+    }
+
+    &__plus-img{
+        width: 2rem;
+        color:  #a7a7a7;
     }
 }
 .favorites-cities {
