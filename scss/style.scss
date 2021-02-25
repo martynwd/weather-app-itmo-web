@@ -17,6 +17,10 @@ body {
     padding: 5px;
     align-items: center;
     &__update-button{
+        @media only screen and (min-width: 310px) and (max-width: 560) {
+            background-image: url(../img/refresh.svg);
+            background-color: wheat;
+        }
         width: 10rem;
         height: 3rem;
         background-color: #a7a7a7;
@@ -24,17 +28,13 @@ body {
         border: none;
         color: white;
     }
-
-    &__title {
-       
-    }
 }
 
 .city-card {
-    @media only screen and (min-width: 310px) and (max-width: 1024px) {
+    @media only screen and (min-width: 310px) and (max-width: 820) {
         width: auto;
     }
-    width: 500px;
+    width: 95%;
     display: grid;
     &__params {
         list-style-type: none;
@@ -87,6 +87,14 @@ body {
     }
     &__remove-btn {
         grid-area: remove-btn;
+    }
+}
+.form{
+    display: flex;
+    justify-content: flex-end;
+    &__input {
+        width: 15rem;
+        height: 1.5rem;
     }
 }
 .favorites-cities {
