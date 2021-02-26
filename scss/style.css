@@ -27,6 +27,15 @@ body {
 }
 
 .header__update-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 7rem;
   height: 3rem;
   background-color: #d3d0d0;
@@ -36,6 +45,21 @@ body {
 
 .header__update-img {
   width: 2rem;
+  display: none;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 1024px) {
+  .header__update-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 310px) and (max-width: 1024px) {
+  .header__update-text {
+    display: none;
+  }
 }
 
 .city-card {
@@ -44,9 +68,9 @@ body {
   display: grid;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 820) {
+@media only screen and (min-width: 310px) and (max-width: 1030px) {
   .city-card {
-    width: auto;
+    width: 100%;
   }
 }
 
@@ -69,6 +93,24 @@ body {
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
+.city-card__key-value {
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.city-card__key {
+  font-weight: bold;
+}
+
+.city-card__value {
+  font-weight: lighter;
+}
+
 .city-preview {
   display: -ms-grid;
   display: grid;
@@ -78,6 +120,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 880px) {
+  .city-preview {
+    width: 100%;
+  }
 }
 
 .city-preview_expanded {
@@ -147,19 +195,55 @@ body {
           align-items: center;
 }
 
+@media only screen and (min-width: 310px) and (max-width: 1030px) {
+  .form {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[5];
+        grid-template-columns: repeat(5, 1fr);
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 'input input input input submit';
+  }
+}
+
 .form__input {
   width: 15rem;
   height: 1.5rem;
+  grid-area: input;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 1024px) {
+  .form__input {
+    width: 90%;
+  }
 }
 
 .form__submit {
   border: none;
   background-color: #fff;
+  grid-area: submit;
 }
 
 .form__plus-img {
   width: 2rem;
   color: #a7a7a7;
+  grid-area: plus-img;
+}
+
+.favorites-cities__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 1030px) {
+  .favorites-cities__header {
+    display: block;
+  }
 }
 
 .favorites-cities__list {

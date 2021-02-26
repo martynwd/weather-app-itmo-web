@@ -18,6 +18,9 @@ body {
     align-items: center;
 
     &__update-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 7rem;
         height: 3rem;
         background-color: #d3d0d0;
@@ -27,14 +30,25 @@ body {
     }
     &__update-img {
         width: 2rem;
+        display: none;
+        @media only screen and (min-width: 310px) and (max-width: 1024px) {
+            display: flex;
+            
+        }
+    }
+    &__update-text{
+        @media only screen and (min-width: 310px) and (max-width: 1024px) {
+            display: none;
+        }
     }
 }
 
 .city-card {
-    @media only screen and (min-width: 310px) and (max-width: 820) {
-        width: auto;
-    }
     width: 95%;
+    @media only screen and (min-width: 310px) and (max-width: 1030px) {
+        width: 100% ;
+
+    }
     display: grid;
     &__params {
         list-style-type: none;
@@ -53,12 +67,27 @@ body {
         
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
+    &__key-value {
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__key {
+        font-weight: bold;
+    }
+    &__value {
+        font-weight: lighter;
+    }
 }
 .city-preview {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: 'name name degrees weather-icon remove-btn';
     align-items: center;
+    @media only screen and (min-width: 310px) and (max-width: 880px) {
+        width: 100% ;
+
+    }
     &_expanded {
         font-size: 36px;
         display: grid;
@@ -95,26 +124,51 @@ body {
         width: 2rem;
 
     }
+
 }
 .form{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @media only screen and (min-width: 310px) and (max-width: 1030px) {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-template-areas: 'input input input input submit';
+
+    }
     &__input {
+        @media only screen and (min-width: 310px) and (max-width: 1024px) {
+            width: 90%;
+        }
         width: 15rem;
         height: 1.5rem;
+        grid-area: input;
     }
-    &__submit{
+    &__submit {
         border: none;
         background-color: #fff;
+        grid-area: submit;
     }
 
-    &__plus-img{
+    &__plus-img {
         width: 2rem;
         color:  #a7a7a7;
+        grid-area: plus-img;
     }
 }
 .favorites-cities {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        @media only screen and (min-width: 310px) and (max-width: 1030px) {
+            display: block;
+
+        }
+    }
     &__list {
         display: grid;
         list-style-type: none;

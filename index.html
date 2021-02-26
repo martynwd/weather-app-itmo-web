@@ -13,37 +13,56 @@
             <button class="header__update-button">
                 <span>
                     <img class ="header__update-img" src="./img/refresh.svg">
+                    <span class="header__update-text">Обновить геолокацию</span>
                 </span>
             </button>
         </header>
         <main class="main">
             <section class="current-city">
                 <div class="city-card city-card_main">
-                    <div class="city-preview_expanded">
-                        <span class="city-preview__name">Saint-Petersburg</span>
+                    <div class="city-preview city-preview_expanded">
+                        <h2 class="city-preview__name">Saint-Petersburg</h2>
                         <p class="city-preview__degrees">8 C</p>
                         <img class="city-preview__weather-icon_lg" src="./img/cloud.svg">
                     </div>
                     <ul class="city-card__params">
-                        <li class="city-card__param">temp</li>
-                        <li class="city-card__param">param2</li>
-                        <li class="city-card__param">param3</li>
+                        <li class="city-card__param">
+                            <div class="city-card__key-value">
+                                <span class="city-card__key"> key</span>
+                                <span class="city-card__value">value</span>                             
+                            </div>
+                        </li>
+                        <li class="city-card__param">
+                            <div class="city-card__key-value">
+                                <span class="city-card__key"> key</span>
+                                <span class="city-card__value">value</span>              
+                            </div>
+                        </li>
+                        <li class="city-card__param">
+                            <div class="city-card__key-value">
+                                <span class="city-card__key"> key</span>
+                                <span class="city-card__value">value</span>              
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </section>
-            <form class="form">
-                <input class="form__input" type="text" placeholder="город">
-                <button class="form__submit" type="submit">
-                    <span><img class="form__plus-img" src="./img/plus.svg"></span>
-                    </button>
-            </form>
+
             <section class="favorites-cities">
-                <h2>Избранное</h2>
+                <div class="favorites-cities__header">
+                    <h2>Избранное</h2>
+                    <form class="form">
+                        <input class="form__input" type="text" placeholder="город">
+                        <button class="form__submit" type="submit">
+                            <span><img class="form__plus-img" src="./img/plus.svg"></span>
+                            </button>
+                    </form>
+                </div>
                 <ul class="favorites-cities__list">
                     <li сlass="favorites-cities__item">
                         <div class="city-card city-card">
                             <div class="city-preview">
-                                <span class="city-preview__name">Saint-Petersburg</span>
+                                <h3 class="city-preview__name">Saint-Petersburg</h3>
                                 <p class="city-preview__degrees">8 C</p>
                                 <img class="city-preview__weather-icon_md" src="./img/cloud.svg">
                                 <button class="city-preview__remove-btn">
@@ -53,16 +72,31 @@
                                 </button>
                             </div>
                             <ul class="city-card__params">
-                                <li class="city-card__param">temp</li>
-                                <li class="city-card__param">param2</li>
-                                <li class="city-card__param">param3</li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li сlass="favorites-cities__item">
                         <div class="city-card city-card">
                             <div class="city-preview">
-                                <span class="city-preview__name">Saint-Petersburg</span>
+                                <h3 class="city-preview__name">Saint-Petersburg</h3>
                                 <p class="city-preview__degrees">8 C</p>
                                 <img class="city-preview__weather-icon_md" src="./img/cloud.svg">
                                 <button class="city-preview__remove-btn">
@@ -72,16 +106,31 @@
                                 </button>
                             </div>
                             <ul class="city-card__params">
-                                <li class="city-card__param">temp</li>
-                                <li class="city-card__param">param2</li>
-                                <li class="city-card__param">param3</li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li сlass="favorites-cities__item">
                         <div class="city-card city-card">
                             <div class="city-preview">
-                                <span class="city-preview__name">Saint-Petersburg</span>
+                                <h3 class="city-preview__name">Saint-Petersburg</h3>
                                 <p class="city-preview__degrees">8 C</p>
                                 <img class="city-preview__weather-icon_md" src="./img/cloud.svg">
                                 <button class="city-preview__remove-btn">
@@ -91,9 +140,24 @@
                                 </button>
                             </div>
                             <ul class="city-card__params">
-                                <li class="city-card__param">temp</li>
-                                <li class="city-card__param">param2</li>
-                                <li class="city-card__param">param3</li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
+                                <li class="city-card__param">
+                                    <div class="city-card__key-value">
+                                        <span class="city-card__key"> key</span>
+                                        <span class="city-card__value">value</span>                             
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </li>
