@@ -98,6 +98,7 @@ body {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: name;
+  font-size: 20px;
 }
 
 .city-preview__degrees {
