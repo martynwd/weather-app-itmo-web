@@ -3,6 +3,7 @@ body {
 }
 
 .container {
+    font-family: 'Roboto', sans-serif;
     margin: auto;
     width: 70%;
     @media only screen and (min-width: 310px) and (max-width: 1024px) {
@@ -134,6 +135,11 @@ body {
     }
 
 }
+
+// .main {
+//     display: none; //for throbber
+// }
+
 .form{
     display: flex;
     justify-content: flex-end;
