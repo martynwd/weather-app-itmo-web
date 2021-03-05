@@ -107,8 +107,20 @@ body {
   font-weight: bold;
 }
 
+@media only screen and (min-width: 310px) and (max-width: 550px) {
+  .city-card__key {
+    font-size: 15px;
+  }
+}
+
 .city-card__value {
   font-weight: lighter;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 550px) {
+  .city-card__value {
+    font-size: 15px;
+  }
 }
 
 .city-preview {

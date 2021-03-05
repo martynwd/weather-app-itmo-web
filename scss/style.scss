@@ -74,8 +74,16 @@ body {
     }
     &__key {
         font-weight: bold;
+        @media only screen and (min-width: 310px) and (max-width: 550px) {
+            font-size: 15px;
+    
+        }
     }
     &__value {
+        @media only screen and (min-width: 310px) and (max-width: 550px) {
+            font-size: 15px;
+    
+        }
         font-weight: lighter;
     }
 }
