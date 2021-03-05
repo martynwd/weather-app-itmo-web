@@ -1,4 +1,4 @@
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?'
+const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?'
 const appid = '8cac7f2e75696a4b18be15838553f1cb'
 const getCurrentLocation = ()=> {
     if (navigator.geolocation) {
