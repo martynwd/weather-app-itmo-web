@@ -229,6 +229,7 @@ const startListen = () => {
         addToFavorite(input.value).then(() =>{
           console.log(input.value)
           if (input.value !== '')
+          console.log(JSON.stringify(cities))
           cities[input.value] = 1;
           localStorage.setItem('cities', JSON.stringify(cities))
         })
