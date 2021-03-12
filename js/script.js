@@ -49,6 +49,15 @@ const findByName = (name, place) => {
       if (response.status === 401){
         throw new Error('Токен испортился');
       }
+      if (response.status === 403){
+        throw new Error('Forbiden');
+      }
+      if (response.status === 500){
+        throw new Error('Внутренняя ошибка сервера');
+      }
+      if (response.status === 503){
+        throw new Error('Сервис недоступен');
+      }
        return response.json()
     }))
     .then(data => {
@@ -57,11 +66,23 @@ const findByName = (name, place) => {
     })
     .catch((error) =>{
       setLoading(false);
+      if (error.message !== 'Такого города увы не существует'){
+        showError()
+      }
+
       alert(error.message)
       return Promise.reject()
     }))
  }
 
+const showError = () => {
+  let loader = document.getElementsByClassName('loader');
+  let container = document.getElementsByClassName('container');
+  let errorDiv = document.getElementsByClassName('error_page');
+  loader[0].style.display = 'none'
+  container[0].style.display = 'none'
+  errorDiv[0].style.display = 'block'
+} 
 const updateCity = (weatherData, city)=> {
     city.getElementsByClassName('city-preview__name')[0].innerHTML = weatherData.name;
     const params = Array.from(city.getElementsByClassName('city-card__key-value'));
@@ -89,6 +110,7 @@ const setParams = (params ,weatherData) => {
   const setLoading = (state) => {
     let loader = document.getElementsByClassName('loader');
     let container = document.getElementsByClassName('container');
+    console.log('loaad')
     loader[0].style.display = state ? 'block' : 'none'
     container[0].style.display = state ? 'none' : 'block'
   }
@@ -205,7 +227,6 @@ const startListen = () => {
         alert('ТАкой горож уже есть')
       } else {
         addToFavorite(input.value).then(() =>{
-          console.log('nu da')
           cities[input.value] = 1;
           localStorage.setItem('cities', JSON.stringify(cities))
         })

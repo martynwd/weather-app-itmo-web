@@ -4,6 +4,7 @@ body {
 
 .container {
     font-family: 'Roboto', sans-serif;
+    display: none;
     margin: auto;
     width: 70%;
     @media only screen and (min-width: 310px) and (max-width: 1800px) {
@@ -258,4 +259,7 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+.error_page {
+    display: none;
 }

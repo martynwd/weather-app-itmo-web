@@ -4,6 +4,7 @@ body {
 
 .container {
   font-family: 'Roboto', sans-serif;
+  display: none;
   margin: auto;
   width: 70%;
 }
@@ -354,5 +355,9 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.error_page {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
