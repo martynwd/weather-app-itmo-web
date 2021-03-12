@@ -227,6 +227,7 @@ const startListen = () => {
         alert('ТАкой горож уже есть')
       } else {
         addToFavorite(input.value).then(() =>{
+          if (input.value !== '')
           cities[input.value] = 1;
           localStorage.setItem('cities', JSON.stringify(cities))
         })
