@@ -9,7 +9,7 @@ body {
   width: 70%;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .container {
     width: 90%;
   }
@@ -51,7 +51,7 @@ body {
   display: none;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .header__update-img {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -59,7 +59,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .header__update-text {
     display: none;
   }
@@ -71,15 +71,31 @@ body {
   display: grid;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .city-card {
     width: 100%;
   }
 }
 
+@media only screen and (min-width: 800px) and (max-width: 2000px) {
+  .city-card {
+    width: 100%;
+  }
+}
+
+.city-card_favorite {
+  margin: 0 0.5rem;
+}
+
 .city-card__params {
   list-style-type: none;
   padding: 0;
+}
+
+.city-card__params_main {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 1rem;
 }
 
 .city-card__param {
@@ -92,6 +108,7 @@ body {
 
 .city-card_main {
   width: 100%;
+  margin: 0px;
   -ms-grid-columns: (minmax(270px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
@@ -137,7 +154,7 @@ body {
           align-items: center;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 880px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .city-preview {
     width: 100%;
   }
@@ -158,6 +175,7 @@ body {
 }
 
 .city-preview__name {
+  margin: 0 0.5rem;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: name;
@@ -192,6 +210,15 @@ body {
   grid-area: remove-btn;
   border: none;
   background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .city-preview__remove-img {
@@ -208,7 +235,7 @@ body {
       grid-template-areas: 'input input input input submit';
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .form {
     display: -ms-grid;
     display: grid;
@@ -234,12 +261,27 @@ body {
   grid-area: input;
 }
 
+@media only screen and (min-width: 310px) and (max-width: 800px) {
+  .form__input {
+    justify-self: flex-start;
+  }
+}
+
 .form__submit {
   border: none;
   background-color: #fff;
   -ms-grid-row: 1;
   -ms-grid-column: 5;
   grid-area: submit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .form__plus-img {
@@ -253,9 +295,10 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
+  margin: 0 0.5rem;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .favorites-cities__header {
     display: block;
   }
@@ -280,12 +323,23 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 640px;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .favorites-cities__list > li {
     width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 2000px) {
+  .favorites-cities__list > li {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) {
+  .favorites-cities__list > li {
+    width: 300px;
   }
 }
 
@@ -301,7 +355,7 @@ body {
           align-items: center;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 1800px) {
+@media only screen and (min-width: 310px) and (max-width: 800px) {
   .favorites-cities__list {
     display: -webkit-box;
     display: -ms-flexbox;

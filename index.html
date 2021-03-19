@@ -29,7 +29,7 @@
                         <p class="city-preview__degrees">8 C</p>
                         <img class="city-preview__weather-icon city-preview__weather-icon_lg" src="./img/cloud.svg">
                     </div>
-                    <ul class="city-card__params">
+                    <ul class="city-card__params_main">
                         <li class="city-card__param">
                             <div class="city-card__key-value">
                                 <span class="city-card__key"> key</span>
@@ -75,6 +75,54 @@
                     </form>
                 </div>
                 <ul class="favorites-cities__list">
+                    <template id="favorites-cities-card-template">
+                        <li class="favorites-cities__item">
+                            <div class="city-card city-card_favorite">
+                                <div class="city-preview">
+                                    <h3 class="city-preview__name"></h3>
+                                    <p class="city-preview__degrees"></p>
+                                    <img class="city-preview__weather-icon city-preview__weather-icon_md">
+                                    <button class="city-preview__remove-btn">
+                                        <span>
+                                            <img class="city-preview__remove-img" src="./img/remove.svg">
+                                        </span>
+                                    </button>
+                                </div>
+                                <ul class="city-card__params">
+                                    <li class="city-card__param">
+                                        <div class="city-card__key-value">
+                                            <span class="city-card__key"></span>
+                                            <span class="city-card__value"></span>
+                                        </div>
+                                    </li>
+                                    <li class="city-card__param">
+                                        <div class="city-card__key-value">
+                                            <span class="city-card__key"></span>
+                                            <span class="city-card__value"></span>
+                                        </div>
+                                    </li>
+                                    <li class="city-card__param">
+                                        <div class="city-card__key-value">
+                                            <span class="city-card__key"></span>
+                                            <span class="city-card__value"></span>
+                                        </div>
+                                    </li>
+                                    <li class="city-card__param">
+                                        <div class="city-card__key-value">
+                                            <span class="city-card__key"></span>
+                                            <span class="city-card__value"></span>
+                                        </div>
+                                    </li>
+                                    <li class="city-card__param">
+                                        <div class="city-card__key-value">
+                                            <span class="city-card__key"></span>
+                                            <span class="city-card__value"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </template>
                 </ul>
             </section>
         </main>

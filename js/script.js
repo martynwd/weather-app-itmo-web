@@ -2,6 +2,7 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?'
 const appid = '8cac7f2e75696a4b18be15838553f1cb'
 
 const getCurrentLocation = ()=> {
+    //setLoading(true)
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(show, onPermissionError);
     }
@@ -28,18 +29,20 @@ const onPermissionError = (error) => {
  }
 
 
-const findByName = (name, place) => {
+const findByName = (name, place, newCity) => {
   const geoParams = {
     q: name,
     appid: appid
 }
-    return getDefault(geoParams, place)
+    return getDefault(geoParams, place, newCity)
 }
 
 
- const getDefault = (geoParams, city)=>{
-   console.log('city', city)
-    setLoading(true)
+ const getDefault = (geoParams, city, newCity = false )=>{
+  let cities = JSON.parse(localStorage.getItem('cities'))
+    if (!newCity) {
+      setLoading(true)
+    }
     const url = apiUrl + new URLSearchParams(geoParams).toString()
     return (fetch(url)
     .then((response =>{
@@ -61,33 +64,26 @@ const findByName = (name, place) => {
        return response.json()
     }))
     .then(data => {
+        if (data.id in cities && newCity){
+          throw new Error('Такой город вы уже добавили')
+        }
         updateCity(data, city)
         setLoading(false);
+        return data;
     })
     .catch((error) =>{
       setLoading(false);
-      if (error.message !== 'Такого города увы не существует'){
-        showError()
-      }
-
       alert(error.message)
       return Promise.reject()
     }))
  }
-
-const showError = () => {
-  let loader = document.getElementsByClassName('loader');
-  let container = document.getElementsByClassName('container');
-  let errorDiv = document.getElementsByClassName('error_page');
-  loader[0].style.display = 'none'
-  container[0].style.display = 'none'
-  errorDiv[0].style.display = 'block'
-} 
 const updateCity = (weatherData, city)=> {
     city.getElementsByClassName('city-preview__name')[0].innerHTML = weatherData.name;
     const params = Array.from(city.getElementsByClassName('city-card__key-value'));
+
     city.getElementsByClassName('city-preview__degrees')[0].innerHTML = Math.round((weatherData.main.temp - 273)).toString() + 'C';
     var iconurl = "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + ".png";
+    
     city.getElementsByClassName('city-preview__weather-icon')[0].src=iconurl
     setParams(params, weatherData)
 }
@@ -110,19 +106,25 @@ const setParams = (params ,weatherData) => {
   const setLoading = (state) => {
     let loader = document.getElementsByClassName('loader');
     let container = document.getElementsByClassName('container');
-    console.log('loaad')
     loader[0].style.display = state ? 'block' : 'none'
     container[0].style.display = state ? 'none' : 'block'
   }
 
-  const addToFavorite = (cityName) => {
+  const addToFavorite = async (cityName, newCity) => {
     let favoriteList = document.getElementsByClassName('favorites-cities__list')
     let city = generateFavotiveCity()
-    return findByName(cityName, city.querySelector('.city-card_favorite')).then(()=>{
-      favoriteList[0].appendChild(city)
-    }).catch(()=>{
-      return Promise.reject()
-    })
+    // console.log('city', city)
+
+    try {
+      await findByName(cityName, city.querySelector('.city-card_favorite'), newCity)
+      .then((data)=> {
+        console.log('blessrBF', data)
+        favoriteList[0].appendChild(city)
+      });
+      return await findByName(cityName, city.querySelector('.city-card_favorite'), newCity)
+    } catch (e) {
+      return Promise.reject();
+    }
   }
   
 
@@ -144,6 +146,11 @@ const setParams = (params ,weatherData) => {
       favoriteCityCont.appendChild(preview);
       favoriteCityCont.appendChild(params)
       favoriteCity.appendChild(favoriteCityCont);
+
+      // let template = document.querySelector('#favorites-cities-card-template').content
+      // let favoriteCity = document.importNode(template, true)
+      // console.log(typeof favoriteCity)
+      // console.log('favcity', template)
 
       return favoriteCity;
 
@@ -170,15 +177,20 @@ const setParams = (params ,weatherData) => {
 
     let removeBtn = document.createElement('button');
     removeBtn.className = 'city-preview__remove-btn'
+    
     removeBtn.addEventListener('click', ()=>{
       const mainList = removeBtn.parentNode.parentNode.parentNode.parentNode
       mainList.removeChild(removeBtn.parentNode.parentNode.parentNode)
       let cities = JSON.parse(localStorage.getItem('cities'))
-      delete cities[name.innerHTML]
+      
+      for (var key in cities) {
+        if (cities[key] == name.innerHTML) delete cities[key];
+    }
       localStorage.setItem('cities', JSON.stringify(cities))
       console.log(cities)
       
     })
+    
     span.appendChild(deleteImg);
     removeBtn.appendChild(span);
 
@@ -216,25 +228,25 @@ const startListen = () => {
   let addBtn = document.querySelector('.form__submit')
   let refreshBtn = document.querySelector('.header__update-button')
   let input = document.querySelector('.form__input');
+
+
+
   addBtn.addEventListener('click', (event)=>{
-      event.preventDefault()
+      event.preventDefault();
       if (input.value === ''){
         alert('Поле не должно быть пустое');
         return;
       }
-      let cities = JSON.parse(localStorage.getItem('cities'))
-      if (input.value in cities){
-        alert('ТАкой горож уже есть')
-      } else {
-        addToFavorite(input.value).then(() =>{
-          console.log(input.value)
-          if (input.value !== '')
-          console.log(JSON.stringify(cities))
-          cities[input.value] = 1;
+      let cities = JSON.parse(localStorage.getItem('cities'));
+
+      addToFavorite(input.value, true).then((data) =>{
+        console.log('data', data)
+          cities[data.id] = input.value;
           localStorage.setItem('cities', JSON.stringify(cities))
-        })
-      }
-    
+          input.value = '';
+      })
+      
+      
   })
   refreshBtn.addEventListener('click', ()=>{
     getCurrentLocation()
@@ -247,14 +259,13 @@ const setFavorites = () =>{
   }
 
   let cities = JSON.parse(localStorage.getItem('cities'))
-  Object.keys(cities).map(city => addToFavorite(city))
+  Object.values(cities).map(city => addToFavorite(city))
 }
 
 const init =  () =>{
-  setFavorites()
   startListen()
   getCurrentLocation()
-
+  setFavorites()
 }
 
   const degToCard = (deg) => {
@@ -294,3 +305,4 @@ const init =  () =>{
   }
 
 init()
+

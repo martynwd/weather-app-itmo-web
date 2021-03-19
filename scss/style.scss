@@ -7,7 +7,7 @@ body {
     display: none;
     margin: auto;
     width: 70%;
-    @media only screen and (min-width: 310px) and (max-width: 1800px) {
+    @media only screen and (min-width: 310px) and (max-width: 800px) {
         width: 90%;
     }
 }
@@ -34,13 +34,13 @@ body {
     &__update-img {
         width: 2rem;
         display: none;
-        @media only screen and (min-width: 310px) and (max-width: 1800px) {
+        @media only screen and (min-width: 310px) and (max-width: 800px) {
             display: flex;
             
         }
     }
     &__update-text{
-        @media only screen and (min-width: 310px) and (max-width: 1800px) {
+        @media only screen and (min-width: 310px) and (max-width: 800px) {
             display: none;
         }
     }
@@ -48,15 +48,27 @@ body {
 
 .city-card {
     width: 100%;
-    @media only screen and (min-width: 310px) and (max-width: 1800px) {
+    @media only screen and (min-width: 310px) and (max-width: 800px) {
         width: 100% ;
 
+    }
+    @media only screen and (min-width: 800px) and (max-width: 2000px) {
+        width: 100%;
+
+    }
+    &_favorite {
+        margin: 0 0.5rem;
     }
     display: grid;
     &__params {
         list-style-type: none;
         padding: 0;
 
+    }
+    &__params_main {
+        list-style-type: none;
+        padding: 0;
+        margin: 0 1rem;
     }
     &__param {
         background-color: #a7a7a7;
@@ -67,7 +79,7 @@ body {
     }
     &_main{
         width: 100%;
-        
+        margin: 0px;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
     &__key-value {
@@ -95,7 +107,7 @@ body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: 'name name degrees weather-icon remove-btn';
     align-items: center;
-    @media only screen and (min-width: 310px) and (max-width: 880px) {
+    @media only screen and (min-width: 310px) and (max-width: 800px) {
         width: 100% ;
 
     }
@@ -110,8 +122,13 @@ body {
                             align-items: center;
     }
     &__name {
+        margin: 0 0.5rem;
         grid-area: name;
         font-size: 20px;
+        // @media only screen and (min-width: 310px) and (max-width: 800px) {
+        //     margin: 0;
+    
+        // }
 
     }
     &__degrees{
@@ -130,6 +147,10 @@ body {
         grid-area: remove-btn;
         border: none;
         background-color: #fff;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
     &__remove-img {
         width: 2rem;
@@ -138,16 +159,12 @@ body {
 
 }
 
-// .main {
-//     display: none; //for throbber
-// }
-
 .form{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
     grid-template-areas: 'input input input input submit';
-    @media only screen and (min-width: 310px) and (max-width: 1800px) {
+    @media only screen and (min-width: 310px) and (max-width: 800px) {
         // display: flex;
         // justify-content: center;
         // align-items: center;
@@ -163,6 +180,10 @@ body {
         // }
         width: 95%;
         justify-self: center;
+        @media only screen and (min-width: 310px) and (max-width: 800px) {
+            justify-self: flex-start;
+    
+        }
         align-self: center;
         height: 1.5rem;
         grid-area: input;
@@ -171,6 +192,10 @@ body {
         border: none;
         background-color: #fff;
         grid-area: submit;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     &__plus-img {
@@ -183,10 +208,11 @@ body {
     &__header {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        @media only screen and (min-width: 310px) and (max-width: 1800px) {
+        @media only screen and (min-width: 310px) and (max-width: 800px) {
             display: block;
 
         }
+        margin: 0 0.5rem;
     }
     &__list {
         display: grid;
@@ -197,11 +223,17 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            @media only screen and (min-width: 310px) and (max-width: 1800px) {
+            @media only screen and (min-width: 310px) and (max-width: 800px) {
                 width: 100%;
     
             }
-            width: 640px;
+            @media only screen and (min-width: 1500px) and (max-width: 2000px) {
+                width: 100%;
+            }
+            @media only screen and (min-width: 801px) and (max-width: 1000px) {
+                width: 300px;
+            }
+            
         }
 
     }
@@ -210,7 +242,7 @@ body {
         justify-content: center;
         align-items: center;
     }
-    @media only screen and (min-width: 310px) and (max-width: 1800px) {
+    @media only screen and (min-width: 310px) and (max-width: 800px) {
         &__list {
             display: flex;
             flex-direction: column;
