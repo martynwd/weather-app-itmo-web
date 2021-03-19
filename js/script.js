@@ -119,7 +119,9 @@ const setParams = (params ,weatherData) => {
       await findByName(cityName, city.querySelector('.city-card_favorite'), newCity)
       .then((data)=> {
         console.log('blessrBF', data)
-        favoriteList[0].appendChild(city)
+        let favoriteCity = document.importNode(city, true)
+        favoriteList[0].appendChild(favoriteCity)
+        attachRemoveListeners()
       });
       return await findByName(cityName, city.querySelector('.city-card_favorite'), newCity)
     } catch (e) {
@@ -129,30 +131,30 @@ const setParams = (params ,weatherData) => {
   
 
   const generateFavotiveCity = ()=>{
-      let favoriteCity = document.createElement('li');
-      favoriteCity.className = 'favorites-cities__item';
+      // let favoriteCity = document.createElement('li');
+      // favoriteCity.className = 'favorites-cities__item';
 
-      let favoriteCityCont = document.createElement('div');
-      favoriteCityCont.className = 'city-card city-card_favorite';
+      // let favoriteCityCont = document.createElement('div');
+      // favoriteCityCont.className = 'city-card city-card_favorite';
 
-      let preview = genarateCityPreview();
+      // let preview = genarateCityPreview();
 
-      let params = document.createElement('ul');
-      params.className = 'city-card__params'
-      for (let i = 0; i < 5; i++){
-        params.appendChild(generateParam())
-      }
+      // let params = document.createElement('ul');
+      // params.className = 'city-card__params'
+      // for (let i = 0; i < 5; i++){
+      //   params.appendChild(generateParam())
+      // }
 
-      favoriteCityCont.appendChild(preview);
-      favoriteCityCont.appendChild(params)
-      favoriteCity.appendChild(favoriteCityCont);
+      // favoriteCityCont.appendChild(preview);
+      // favoriteCityCont.appendChild(params)
+      // favoriteCity.appendChild(favoriteCityCont);
 
-      // let template = document.querySelector('#favorites-cities-card-template').content
-      // let favoriteCity = document.importNode(template, true)
-      // console.log(typeof favoriteCity)
-      // console.log('favcity', template)
+      let template = document.querySelector('#favorites-cities-card-template').content
+      let favoriteCity = document.importNode(template, true)
+      console.log(typeof favoriteCity)
+      console.log('favcity', template)
 
-      return favoriteCity;
+      return template;
 
   }
 
@@ -178,18 +180,7 @@ const setParams = (params ,weatherData) => {
     let removeBtn = document.createElement('button');
     removeBtn.className = 'city-preview__remove-btn'
     
-    removeBtn.addEventListener('click', ()=>{
-      const mainList = removeBtn.parentNode.parentNode.parentNode.parentNode
-      mainList.removeChild(removeBtn.parentNode.parentNode.parentNode)
-      let cities = JSON.parse(localStorage.getItem('cities'))
-      
-      for (var key in cities) {
-        if (cities[key] == name.innerHTML) delete cities[key];
-    }
-      localStorage.setItem('cities', JSON.stringify(cities))
-      console.log(cities)
-      
-    })
+
     
     span.appendChild(deleteImg);
     removeBtn.appendChild(span);
@@ -230,7 +221,6 @@ const startListen = () => {
   let input = document.querySelector('.form__input');
 
 
-
   addBtn.addEventListener('click', (event)=>{
       event.preventDefault();
       if (input.value === ''){
@@ -252,7 +242,33 @@ const startListen = () => {
     getCurrentLocation()
   })
 }
+const attachRemoveListeners = () =>{
+  let removeBtns = document.querySelectorAll('.city-preview__remove-btn')
+  console.log(removeBtns)
+  removeBtns.forEach((removeBtn) =>{
+    removeBtn.addEventListener('click', ()=>{
+      const mainList = removeBtn.parentNode.parentNode.parentNode.parentNode
+      console.log('kist', mainList)
+      if(removeBtn.parentNode.parentNode.parentNode !== null){
+        console.log(removeBtn.parentNode.parentNode.parentNode)
+        mainList.removeChild(removeBtn.parentNode.parentNode.parentNode)
+      }
+      
+      let cities = JSON.parse(localStorage.getItem('cities'))
+      for (var key in cities) {
+        if (cities[key] == removeBtn.parentNode.querySelector('.city-preview__name').innerHTML) {
+          delete cities[key]
+        };
+        
+    }
+      localStorage.setItem('cities', JSON.stringify(cities))
+      console.log(cities)
+      
+    })
+    
+  })
 
+}
 const setFavorites = () =>{
   if (localStorage.getItem('cities') === null) {
     localStorage.setItem('cities', JSON.stringify({}))
