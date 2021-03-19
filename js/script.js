@@ -40,9 +40,8 @@ const findByName = (name, place, newCity) => {
 
  const getDefault = (geoParams, city, newCity = false )=>{
   let cities = JSON.parse(localStorage.getItem('cities'))
-    if (!newCity) {
-      setLoading(true)
-    }
+    setLoading(true)
+    
     const url = apiUrl + new URLSearchParams(geoParams).toString()
     return (fetch(url)
     .then((response =>{
