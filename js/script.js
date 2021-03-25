@@ -40,6 +40,7 @@ const findByName = (name, place, newCity) => {
 
  const getDefault = (geoParams, city, newCity = false )=>{
   let cities = JSON.parse(localStorage.getItem('cities'))
+  let input = document.querySelector('.form__input');
     setLoading(true)
     
     const url = apiUrl + new URLSearchParams(geoParams).toString()
@@ -72,6 +73,7 @@ const findByName = (name, place, newCity) => {
     })
     .catch((error) =>{
       setLoading(false);
+      input.value = ''
       alert(error.message)
       return Promise.reject()
     }))
@@ -118,6 +120,7 @@ const setParams = (params ,weatherData) => {
       await findByName(cityName, city.querySelector('.city-card_favorite'), newCity)
       .then((data)=> {
         console.log('blessrBF', data)
+        city.querySelector('.city-preview__name').setAttribute('city_id', data.id)
         let favoriteCity = document.importNode(city, true)
         favoriteList[0].appendChild(favoriteCity)
         attachRemoveListeners()
@@ -230,7 +233,7 @@ const startListen = () => {
 
       addToFavorite(input.value, true).then((data) =>{
         console.log('data', data)
-          cities[data.id] = input.value;
+          cities[data.id] = (input.value).toLowerCase();
           localStorage.setItem('cities', JSON.stringify(cities))
           input.value = '';
       })
@@ -255,7 +258,8 @@ const attachRemoveListeners = () =>{
       
       let cities = JSON.parse(localStorage.getItem('cities'))
       for (var key in cities) {
-        if (cities[key] == removeBtn.parentNode.querySelector('.city-preview__name').innerHTML) {
+        console.log('key', key)
+        if (key === removeBtn.parentNode.querySelector('.city-preview__name').getAttribute('city_id')) {
           delete cities[key]
         };
         
