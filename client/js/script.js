@@ -248,13 +248,14 @@ const attachRemoveListeners = () =>{
   let removeBtns = document.querySelectorAll('.city-preview__remove-btn')
   console.log(removeBtns)
   removeBtns.forEach((removeBtn) =>{
-    removeBtn.addEventListener('click', ()=>{
+    removeBtn.addEventListener('click', (event)=>{
+      event.preventDefault()
       const mainList = removeBtn.parentNode.parentNode.parentNode.parentNode
       console.log('kist', mainList)
-      if(removeBtn.parentNode.parentNode.parentNode !== null){
+
         console.log(removeBtn.parentNode.parentNode.parentNode)
         mainList.removeChild(removeBtn.parentNode.parentNode.parentNode)
-      }
+      
       
       let cities = JSON.parse(localStorage.getItem('cities'))
       for (var key in cities) {
